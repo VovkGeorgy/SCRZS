@@ -98,6 +98,13 @@
             <version>3.1.0</version>
         </dependency>
 
+        <!--Zookeeper-->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.11</version>
+        </dependency>
+
         <!--SPRING-->
         <dependency>
             <groupId>org.springframework</groupId>

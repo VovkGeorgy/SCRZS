@@ -15,5 +15,8 @@ public class Runner {
             e.printStackTrace();
         }
         System.out.println("Running");
+
+//        ZKManager zkManager = new ZKManagerImpl();
+//        zkManager.getZNodeData("/Node", false);
     }
 }
