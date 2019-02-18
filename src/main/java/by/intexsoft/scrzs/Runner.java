@@ -1,6 +1,8 @@
 package by.intexsoft.scrzs;
 
 import by.intexsoft.scrzs.service.RabbitConnectionService;
+import by.intexsoft.scrzs.service.ZKManager;
+import by.intexsoft.scrzs.service.ZKManagerImpl;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -16,7 +18,7 @@ public class Runner {
         }
         System.out.println("Running");
 
-//        ZKManager zkManager = new ZKManagerImpl();
-//        zkManager.getZNodeData("/Node", false);
+        ZKManager zkManager = new ZKManagerImpl();
+        zkManager.getZNodeData("/Node", false);
     }
 }
