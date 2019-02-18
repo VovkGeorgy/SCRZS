@@ -1,7 +1,7 @@
 
 docker exec -it <container name> /bin/bash
 
-docker run -d --hostname host-rabbit --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.7-management
+docker run -d --hostname host-rabbit --name rabbitmq -p 5673:5672 -p 15673:15672 rabbitmq:3.7-management
 
 docker run --name zookeepermy --restart unless-stopped -d zookeeper
 
@@ -10,3 +10,14 @@ docker run -e DS_LICENSE=accept --name my-dse -d datastax/dse-server:6.0.2
 docker run --name spark-master -p 8080:8080 --restart unless-stopped -h spark-master -e ENABLE_INIT_DAEMON=false -d bde2020/spark-master:2.1.1-hadoop2.7
 
 docker run --name spark-worker-1 -p 8081:8081 --restart unless-stopped --link spark-master:spark-master -e ENABLE_INIT_DAEMON=false -d bde2020/spark-worker:2.1.1-hadoop2.7
+
+
+http://spring-projects.ru/projects/spring-amqp/
+
+https://www.wisdomjobs.com/e-university/apache-zookeeper-tutorial-1739/zookeeper-fundamentals-19683.html
+
+https://spring.io/guides/gs/messaging-rabbitmq/
+
+https://www.rabbitmq.com/api-guide.html
+
+java -cp target/scrzs-1.0-SNAPSHOT-jar-with-dependencies.jar by.intexsoft.scrzs.Runner
