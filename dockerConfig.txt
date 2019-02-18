@@ -20,4 +20,6 @@ https://spring.io/guides/gs/messaging-rabbitmq/
 
 https://www.rabbitmq.com/api-guide.html
 
+mvn install
+
 java -cp target/scrzs-1.0-SNAPSHOT-jar-with-dependencies.jar by.intexsoft.scrzs.Runner
