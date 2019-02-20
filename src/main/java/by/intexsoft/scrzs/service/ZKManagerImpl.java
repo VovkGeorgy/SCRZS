@@ -20,7 +20,7 @@ public class ZKManagerImpl implements ZKManager {
     private void initialize() {
         try {
             zkConnection = new ZKConnection();
-            zkeeper = zkConnection.connect("localhost");
+            zkeeper = zkConnection.connect("192.168.99.100");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

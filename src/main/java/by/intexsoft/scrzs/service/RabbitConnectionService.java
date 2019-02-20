@@ -14,7 +14,7 @@ public class RabbitConnectionService {
         factory.setUsername("guest");
         factory.setPassword("guest");
         factory.setVirtualHost("/");
-        factory.setHost("localhost");
+        factory.setHost("192.168.99.100");
         factory.setPort(5673);
         Connection conn = factory.newConnection();
         Channel channel = conn.createChannel();
