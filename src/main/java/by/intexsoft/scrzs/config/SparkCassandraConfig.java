@@ -14,9 +14,11 @@ public class SparkCassandraConfig {
         SparkConf conf = new SparkConf(true)
                 .set("spark.cassandra.connection.host", "192.168.99.100")
                 .set("spark.submit.deployMode", "client");
-
-        return new JavaSparkContext("spark://spark-master:7077", "spark", conf);
-//        return new JavaSparkContext("http://192.168.99.100:7077", "spark", conf);
+        conf.setAppName("mysparkapp");
+        conf.set("spark.cores.max", "2");
+        conf.setMaster("spark://192.168.99.100:7077");
+//        return new JavaSparkContext("spark://spark-master:7077", "spark", conf);
+        return new JavaSparkContext(conf);
     }
 
     @Bean

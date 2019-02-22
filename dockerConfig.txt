@@ -5,7 +5,7 @@ docker run -d --hostname host-rabbit --name rabbitmq -p 5673:5672 -p 15673:15672
 
 docker run --name zookeepermy -p 2181:2181 --restart unless-stopped -d zookeeper
 
-docker run -e DS_LICENSE=accept -p 9042:9042 --name my-dse -d datastax/dse-server:6.0.2
+docker run -e DS_LICENSE=accept -p 9042:9042 --restart unless-stopped --name my-dse -d datastax/dse-server:6.0.2
 
 docker run -e DS_LICENSE=accept --link my-dse -p 9091:9091 --memory 1g --name my-studio -d datastax/dse-studio
 
@@ -35,3 +35,8 @@ https://www.baeldung.com/java-zookeeper
 bin/zkServer.sh start
 
 bin/zkCli.sh
+
+
+docker run --name spark-master162 -p 8080:8080 -p 7077:7077 --restart unless-stopped -h spark-master -e ENABLE_INIT_DAEMON=false -d bde2020/spark-master:1.6.2-hadoop2.6
+
+docker run --name spark-worker-162 -p 8081:8081 --restart unless-stopped --link spark-master162:spark-master -e ENABLE_INIT_DAEMON=false -d bde2020/spark-worker:1.6.2-hadoop2.6
