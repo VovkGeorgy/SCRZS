@@ -12,6 +12,7 @@
 
         <!-- Spring -->
         <spring.version>4.3.18.RELEASE</spring.version>
+        <sprong.amqp.version>1.7.5.RELEASE</sprong.amqp.version>
 
         <!-- Logging -->
         <slf4j.version>1.7.3</slf4j.version>
@@ -19,10 +20,17 @@
 
         <!-- Maven -->
         <maven-compiler-plugin-version>3.5.1</maven-compiler-plugin-version>
-        <maven-tomcat-version>2.2</maven-tomcat-version>
+        <maven-shade-plugin-version>3.2.1</maven-shade-plugin-version>
 
         <!--ProjectLombok-->
         <projectlombok.version>1.18.2</projectlombok.version>
+
+        <!--SPARK-->
+        <spark.version>1.6.2</spark.version>
+
+        <!--ZOOKEEPER-->
+        <zookeeper.version>3.4.11</zookeeper.version>
+
     </properties>
 
     <build>
@@ -44,7 +52,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>${maven-shade-plugin-version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -88,28 +96,28 @@
 
     <dependencies>
 
-        <!--CASSANDRA-->
+        <!--SPARK-->
         <dependency>
             <groupId>com.datastax.spark</groupId>
             <artifactId>spark-cassandra-connector_2.10</artifactId>
-            <version>1.6.2</version>
+            <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.10</artifactId>
-            <version>1.6.2</version>
+            <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_2.10</artifactId>
-            <version>1.6.2</version>
+            <version>${spark.version}</version>
         </dependency>
 
         <!--Zookeeper-->
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.4.11</version>
+            <version>${zookeeper.version}</version>
         </dependency>
 
         <!--SPRING-->
@@ -142,12 +150,12 @@
         <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-amqp</artifactId>
-            <version>1.7.5.RELEASE</version>
+            <version>${sprong.amqp.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit</artifactId>
-            <version>1.7.5.RELEASE</version>
+            <version>${sprong.amqp.version}</version>
         </dependency>
 
         <!--LOGGER-->

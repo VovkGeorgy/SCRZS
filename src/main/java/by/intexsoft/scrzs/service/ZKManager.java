@@ -22,7 +22,7 @@ public interface ZKManager {
      * @throws KeeperException
      * @throws InterruptedException
      */
-    public Object getZNodeData(String path, boolean watchFlag);
+    public String getZNodeData(String path, boolean watchFlag);
 
     /**
      * Update the ZNode Data

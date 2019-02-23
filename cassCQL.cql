@@ -11,6 +11,7 @@ CREATE TABLE user (
    firstname VARCHAR,
    lastname VARCHAR,
    age INT,
+   phonenumber VARCHAR,
    PRIMARY KEY (userid)
 );
 
@@ -21,14 +22,14 @@ CREATE TABLE call (
    PRIMARY KEY (callid)
 );
 
-INSERT INTO user (userid, username, firstname, lastname, age)
-VALUES (99050,'teddn93','Ted', 'Hovards', 43);
+INSERT INTO user (userid, username, firstname, lastname, age, phonenumber)
+VALUES (99050,'teddn93','Ted', 'Hovards', 43, '+847368273948');
 
-INSERT INTO user (userid, username, firstname, lastname, age)
-VALUES (934091,'johnnee123','John', 'Ostins', 32);
+INSERT INTO user (userid, username, firstname, lastname, age, phonenumber)
+VALUES (934091,'johnnee123','John', 'Ostins', 32,'+847284736482');
 
-INSERT INTO user (userid, username, firstname, lastname, age)
-VALUES (9924093,'colinF213','Colin', 'Farel', 37);
+INSERT INTO user (userid, username, firstname, lastname, age, phonenumber)
+VALUES (9924093,'colinF213','Colin', 'Farel', 37,'+857371623748');
 
 INSERT INTO call (callid, calloutnumber, callinnuber)
 VALUES (115301,'+847368273948','+847284736482');

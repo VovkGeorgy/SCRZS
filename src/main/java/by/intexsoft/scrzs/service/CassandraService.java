@@ -8,6 +8,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.datastax.spark.connector.japi.CassandraJavaUtil.*;
 import static com.datastax.spark.connector.japi.CassandraJavaUtil.mapColumnTo;
 
 @Service
@@ -24,7 +25,7 @@ public class CassandraService {
 
     public void getUserData() {
         System.out.println("\n Service start \n");
-        JavaRDD<String> updatedOnDay = CassandraJavaUtil.javaFunctions(javaSparkContext).cassandraTable("mykeyspace",
+        JavaRDD<String> updatedOnDay = javaFunctions(javaSparkContext).cassandraTable("mykeyspace",
                 "user", mapColumnTo(String.class)).select("username");
         System.out.println("\n Start printing usernames \n");
         for (String user : updatedOnDay.collect()) {

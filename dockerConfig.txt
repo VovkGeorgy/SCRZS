@@ -35,11 +35,22 @@ bin/zkServer.sh start
 
 bin/zkCli.sh
 
+create /node_name my_data
+
+
+#Spark-Cassandra zookeeper config
+create /spark_cassandra_connection_host 192.168.99.100
+spark_submit_deployMode client
+spark_app_name mysparkapp
+spark_cores_max 1
+spark_master_url spark://192.168.99.100:7077
+spark_context_jar ./target/scrzs-1.0-SNAPSHOT.jar
+cassandra_keyspace mykeyspace
+
+<==============================spark-working-version==========================>
 
 docker run --name spark-master162 -p 8080:8080 -p 7077:7077 --restart unless-stopped -h spark-master -e ENABLE_INIT_DAEMON=false -d bde2020/spark-master:1.6.2-hadoop2.6
 
 docker run --name spark-worker-162 -p 8081:8081 --restart unless-stopped --link spark-master162:spark-master -e ENABLE_INIT_DAEMON=false -d bde2020/spark-worker:1.6.2-hadoop2.6
 
-
-
-spark-shell --packages "com.datastax.spark":"spark-cassandra-connector_2.10":"1.6.3"
+bin/spark-shell --packages "com.datastax.spark":"spark-cassandra-connector_2.10":"1.6.2"

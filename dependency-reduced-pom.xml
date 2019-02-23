@@ -21,7 +21,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.1</version>
+        <version>${maven-shade-plugin-version}</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -70,11 +70,14 @@
     </dependency>
   </dependencies>
   <properties>
+    <zookeeper.version>3.4.11</zookeeper.version>
+    <slf4j.version>1.7.3</slf4j.version>
+    <maven-shade-plugin-version>3.2.1</maven-shade-plugin-version>
+    <maven-compiler-plugin-version>3.5.1</maven-compiler-plugin-version>
     <projectlombok.version>1.18.2</projectlombok.version>
     <logback.version>1.1.2</logback.version>
-    <slf4j.version>1.7.3</slf4j.version>
+    <sprong.amqp.version>1.7.5.RELEASE</sprong.amqp.version>
+    <spark.version>1.6.2</spark.version>
     <spring.version>4.3.18.RELEASE</spring.version>
-    <maven-compiler-plugin-version>3.5.1</maven-compiler-plugin-version>
-    <maven-tomcat-version>2.2</maven-tomcat-version>
   </properties>
 </project>

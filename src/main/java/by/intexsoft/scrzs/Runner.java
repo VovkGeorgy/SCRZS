@@ -1,10 +1,9 @@
 package by.intexsoft.scrzs;
 
 import by.intexsoft.scrzs.config.AppConfig;
-import by.intexsoft.scrzs.service.CassandraService;
 import by.intexsoft.scrzs.service.RabbitConnectionService;
 import by.intexsoft.scrzs.service.ZKManager;
-import by.intexsoft.scrzs.service.ZKManagerImpl;
+import by.intexsoft.scrzs.service.impl.ZKManagerImpl;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
@@ -16,7 +15,7 @@ public class Runner {
         System.out.println("Running");
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         System.out.println("Finish config context");
-        context.getBean(CassandraService.class).getUserData();
+//        context.getBean(CassandraService.class).getUserData();
 
         try {
             RabbitConnectionService.testConnection();
@@ -24,7 +23,7 @@ public class Runner {
             e.printStackTrace();
         }
 
-        ZKManager zkManager = new ZKManagerImpl();
+        ZKManager zkManager = context.getBean(ZKManagerImpl.class);
         zkManager.getZNodeData("/Node", false);
     }
 }
