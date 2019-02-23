@@ -18,6 +18,7 @@ public class CassandraRepository {
     public Long getUserRowsCount() {
         DataFrame user = cassandraSQLContext.sql("select * from user");
         System.out.println("\nFrom repository\n");
+        System.out.println("\nUser count - " + user.count() + "\n");
         return user.count();
     }
 }

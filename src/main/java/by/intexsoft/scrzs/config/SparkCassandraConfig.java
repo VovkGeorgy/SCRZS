@@ -17,8 +17,9 @@ public class SparkCassandraConfig {
         conf.setAppName("mysparkapp");
         conf.set("spark.cores.max", "2");
         conf.setMaster("spark://192.168.99.100:7077");
-//        return new JavaSparkContext("spark://spark-master:7077", "spark", conf);
-        return new JavaSparkContext(conf);
+        JavaSparkContext sc = new JavaSparkContext(conf);
+        sc.addJar("./target/scrzs-1.0-SNAPSHOT.jar");
+        return sc;
     }
 
     @Bean
