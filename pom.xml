@@ -31,6 +31,9 @@
         <!--ZOOKEEPER-->
         <zookeeper.version>3.4.11</zookeeper.version>
 
+        <!--JSON-->
+        <jackson.version>2.9.8</jackson.version>
+
     </properties>
 
     <build>

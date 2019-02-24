@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Spark Cassandra configuration class
+ */
 @Configuration
 public class SparkCassandraConfig {
 
@@ -21,15 +24,20 @@ public class SparkCassandraConfig {
 
     @Autowired
     public SparkCassandraConfig(ZKManager zkManager) {
-        host = zkManager.getZNodeData("/spark_cassandra_connection_host", false);
-        deployMode = zkManager.getZNodeData("/spark_submit_deployMode", false);
-        appName = zkManager.getZNodeData("/spark_app_name", false);
-        maxCores = zkManager.getZNodeData("/spark_cores_max", false);
-        masterUrl = zkManager.getZNodeData("/spark_master_url", false);
-        contexJar = zkManager.getZNodeData("/spark_context_jar", false);
-        keyspace = zkManager.getZNodeData("/cassandra_keyspace", false);
+        host = zkManager.getZNodeData("/Spark/Cassandra/connection_host", false);
+        keyspace = zkManager.getZNodeData("/Spark/Cassandra/keyspace", false);
+        deployMode = zkManager.getZNodeData("/Spark/submit_deployMode", false);
+        appName = zkManager.getZNodeData("/Spark/app_name", false);
+        maxCores = zkManager.getZNodeData("/Spark/cores_max", false);
+        masterUrl = zkManager.getZNodeData("/Spark/master_url", false);
+        contexJar = zkManager.getZNodeData("/Spark/context_jar", false);
     }
 
+    /**
+     * Create and config spark java context for cassandra service
+     *
+     * @return
+     */
     @Bean
     public JavaSparkContext javaSparkContext() {
         SparkConf conf = new SparkConf(true)
@@ -38,11 +46,16 @@ public class SparkCassandraConfig {
         conf.setAppName(appName);
         conf.set("spark.cores.max", maxCores);
         conf.setMaster(masterUrl);
-        JavaSparkContext sc = new JavaSparkContext(conf);
-        sc.addJar(contexJar);
-        return sc;
+        JavaSparkContext javaSparkContext = new JavaSparkContext(conf);
+        javaSparkContext.addJar(contexJar);
+        return javaSparkContext;
     }
 
+    /**
+     * Create Cassandra sql context
+     *
+     * @return cassandra sql context entity
+     */
     @Bean
     public CassandraSQLContext sqlContext() {
         CassandraSQLContext cassandraSQLContext = new CassandraSQLContext(javaSparkContext().sc());

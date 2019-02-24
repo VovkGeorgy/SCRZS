@@ -7,18 +7,18 @@ USE mykeyspace;
 
 CREATE TABLE user (
    userid BIGINT,
-   username VARCHAR,
-   firstname VARCHAR,
-   lastname VARCHAR,
+   username TEXT,
+   firstname TEXT,
+   lastname TEXT,
    age INT,
-   phonenumber VARCHAR,
+   phonenumber TEXT,
    PRIMARY KEY (userid)
 );
 
 CREATE TABLE call (
    callid BIGINT,
-   calloutnumber VARCHAR,
-   callinnuber VARCHAR,
+   calloutnumber TEXT,
+   callinnuber TEXT,
    PRIMARY KEY (callid)
 );
 

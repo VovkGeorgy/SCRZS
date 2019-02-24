@@ -2,35 +2,37 @@ package by.intexsoft.scrzs.service;
 
 import org.apache.zookeeper.KeeperException;
 
+/**
+ * Zookeeper manager interface
+ */
 public interface ZKManager {
 
     /**
-     * Create a Znode and save some data
+     * Method create znode on zk server
      *
-     * @param path
-     * @param data
-     * @throws KeeperException
-     * @throws InterruptedException
+     * @param path node tree path
+     * @param data data to node
+     * @throws KeeperException      ex
+     * @throws InterruptedException ex
      */
     public void create(String path, byte[] data) throws KeeperException, InterruptedException;
 
     /**
-     * Get ZNode Data
+     * Method get znode data from zk server
      *
-     * @param path
-     * @param watchFlag
-     * @throws KeeperException
-     * @throws InterruptedException
+     * @param path      tree path to znode
+     * @param watchFlag watch flag
+     * @return znode data
      */
     public String getZNodeData(String path, boolean watchFlag);
 
     /**
-     * Update the ZNode Data
+     * Method update znode data on zk server
      *
-     * @param path
-     * @param data
-     * @throws KeeperException
-     * @throws InterruptedException
+     * @param path tree path to znode
+     * @param data new data to node
+     * @throws KeeperException      ex
+     * @throws InterruptedException ex
      */
     public void update(String path, byte[] data) throws KeeperException, InterruptedException, KeeperException;
 }
