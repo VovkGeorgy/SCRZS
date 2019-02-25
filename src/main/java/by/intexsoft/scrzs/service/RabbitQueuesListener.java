@@ -44,7 +44,7 @@ public class RabbitQueuesListener {
      */
     @RabbitListener(queues = "CreateQueue")
     public void listenCreateQueue(String messageFromQueue) {
-        log.info("Geting message {} from create queue", messageFromQueue);
+        log.info("Geting message from create queue {}", messageFromQueue);
         try {
             cassandraUserService.saveUser(mapper.readValue(messageFromQueue, User.class));
         } catch (IOException e) {

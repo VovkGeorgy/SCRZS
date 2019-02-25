@@ -102,18 +102,18 @@
         <!--SPARK-->
         <dependency>
             <groupId>com.datastax.spark</groupId>
-            <artifactId>spark-cassandra-connector_2.10</artifactId>
-            <version>${spark.version}</version>
+            <artifactId>spark-cassandra-connector_2.11</artifactId>
+            <version>2.3.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.10</artifactId>
-            <version>${spark.version}</version>
+            <artifactId>spark-core_2.11</artifactId>
+            <version>2.2.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_2.10</artifactId>
-            <version>${spark.version}</version>
+            <artifactId>spark-sql_2.11</artifactId>
+            <version>2.2.0</version>
         </dependency>
 
         <!--Zookeeper-->

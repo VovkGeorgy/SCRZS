@@ -20,9 +20,9 @@ public class Runner {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         RabbitService rabbit = context.getBean(RabbitService.class);
         log.info("Testing application work!");
-        rabbit.sendToReadQueue(9924093L);
+//        rabbit.sendToReadQueue(88055555L);
         rabbit.sendToCreateQueue("{ \n" +
-                "\t\"userid\": 88055555,\n" +
+                "\t\"userid\": 12312321,\n" +
                 "    \"username\": \"userFromJsonMessage\",\n" +
                 "\t\"firstname\": \"James\",\n" +
                 "\t\"lastname\": \"Oflin\",\n" +

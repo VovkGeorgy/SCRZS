@@ -3,7 +3,6 @@ package by.intexsoft.scrzs.config;
 import by.intexsoft.scrzs.service.ZKManager;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.sql.cassandra.CassandraSQLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -56,10 +55,10 @@ public class SparkCassandraConfig {
      *
      * @return cassandra sql context entity
      */
-    @Bean
-    public CassandraSQLContext sqlContext() {
-        CassandraSQLContext cassandraSQLContext = new CassandraSQLContext(javaSparkContext().sc());
-        cassandraSQLContext.setKeyspace(keyspace);
-        return cassandraSQLContext;
-    }
+//    @Bean
+//    public CassandraSQLContext sqlContext() {
+//        CassandraSQLContext cassandraSQLContext = new CassandraSQLContext(javaSparkContext().sc());
+//        cassandraSQLContext.setKeyspace(keyspace);
+//        return cassandraSQLContext;
+//    }
 }

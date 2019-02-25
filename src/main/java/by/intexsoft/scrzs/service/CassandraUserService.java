@@ -56,5 +56,16 @@ public class CassandraUserService {
         JavaRDD<User> userInfoJavaRDD = javaSparkContext.parallelize(userList);
         javaFunctions(userInfoJavaRDD).writerBuilder(keyspace, "user", mapToRow(User.class)).saveToCassandra();
         System.out.println("\n Entity saved \n");
+        javaSparkContext.stop();
+        javaSparkContext.close();
+    }
+
+    void deleteUserById(Long userId){
+        JavaRDD<User> usersNameById = javaFunctions(javaSparkContext).cassandraTable(keyspace,
+                "user").where("userId=?", userId).dele;
+
+        javaFunctions(javaSparkContext).cassandraTable("test", "word_groups")
+                .where("count < 10")
+                .deleteFromCassandra("test", "word_groups")
     }
 }

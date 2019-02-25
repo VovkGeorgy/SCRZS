@@ -32,7 +32,7 @@ public class RabbitService {
      * @param message message
      */
     public void sendToReadQueue(Long message) {
-        log.debug("Sending message {} to read queue", message);
+        log.info("Sending message {} to read queue", message);
         rabbitTemplate.convertAndSend(exchange, "read", message);
     }
 
@@ -42,7 +42,7 @@ public class RabbitService {
      * @param message message
      */
     public void sendToCreateQueue(String message) {
-        log.debug("Sending message {} to create queue", message);
+        log.info("Sending message {} to create queue", message);
         rabbitTemplate.convertAndSend(exchange, "create", message);
     }
 }
