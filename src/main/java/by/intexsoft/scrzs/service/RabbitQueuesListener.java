@@ -51,4 +51,11 @@ public class RabbitQueuesListener {
             log.error("Cant parse string message from queue to User class, get exception {}", e.getMessage());
         }
     }
+
+    @RabbitListener(queues = "DeleteQueue")
+    public void listenDeleteQueue(Long messageFromQueue) {
+        log.info("Geting message {} from delete queue", messageFromQueue);
+        cassandraUserService.deleteUserById(messageFromQueue);
+    }
+
 }

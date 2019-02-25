@@ -1,6 +1,7 @@
 package by.intexsoft.scrzs.service;
 
 import by.intexsoft.scrzs.entity.User;
+import by.intexsoft.scrzs.repository.CassandraRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -21,13 +22,14 @@ public class CassandraUserService {
 
     private final JavaSparkContext javaSparkContext;
     private final String keyspace;
+    private final CassandraRepository cassandraRepository;
 
 
     @Autowired
-    public CassandraUserService(JavaSparkContext javaSparkContext, ZKManager zkManager) {
+    public CassandraUserService(JavaSparkContext javaSparkContext, ZKManager zkManager, CassandraRepository cassandraRepository) {
         this.javaSparkContext = javaSparkContext;
+        this.cassandraRepository = cassandraRepository;
         keyspace = zkManager.getZNodeData("/Spark/Cassandra/keyspace", false);
-
     }
 
     /**
@@ -60,12 +62,7 @@ public class CassandraUserService {
         javaSparkContext.close();
     }
 
-    void deleteUserById(Long userId){
-        JavaRDD<User> usersNameById = javaFunctions(javaSparkContext).cassandraTable(keyspace,
-                "user").where("userId=?", userId).dele;
-
-        javaFunctions(javaSparkContext).cassandraTable("test", "word_groups")
-                .where("count < 10")
-                .deleteFromCassandra("test", "word_groups")
+    void deleteUserById(Long userId) {
+        cassandraRepository.deleteUserById(userId);
     }
 }

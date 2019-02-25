@@ -20,14 +20,15 @@ public class Runner {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         RabbitService rabbit = context.getBean(RabbitService.class);
         log.info("Testing application work!");
+        rabbit.sendToDeleteQueue(99050L);
 //        rabbit.sendToReadQueue(88055555L);
-        rabbit.sendToCreateQueue("{ \n" +
-                "\t\"userid\": 12312321,\n" +
-                "    \"username\": \"userFromJsonMessage\",\n" +
-                "\t\"firstname\": \"James\",\n" +
-                "\t\"lastname\": \"Oflin\",\n" +
-                "\t\"age\": 72,\n" +
-                "\t\"phonenumber\": \"+4819213213\"\n" +
-                "}");
+//        rabbit.sendToCreateQueue("{ \n" +
+//                "\t\"userid\": 12312321,\n" +
+//                "    \"username\": \"userFromJsonMessage\",\n" +
+//                "\t\"firstname\": \"James\",\n" +
+//                "\t\"lastname\": \"Oflin\",\n" +
+//                "\t\"age\": 72,\n" +
+//                "\t\"phonenumber\": \"+4819213213\"\n" +
+//                "}");
     }
 }

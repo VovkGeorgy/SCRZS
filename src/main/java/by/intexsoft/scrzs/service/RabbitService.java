@@ -45,4 +45,9 @@ public class RabbitService {
         log.info("Sending message {} to create queue", message);
         rabbitTemplate.convertAndSend(exchange, "create", message);
     }
+
+    public void sendToDeleteQueue(Long message) {
+        log.info("Sending message {} to read queue", message);
+        rabbitTemplate.convertAndSend(exchange, "delete", message);
+    }
 }
